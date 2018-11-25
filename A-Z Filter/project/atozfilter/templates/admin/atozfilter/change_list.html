@@ -1,0 +1,32 @@
+{% extends "admin/change_list.html" %}
+{% load i18n admin_urls static admin_list %}
+
+{% block content %}
+    {{ block.super }}
+{% endblock content %}
+
+{% block filters %}
+    {{ block.super }}    
+{%endblock%}
+
+{% block search %}
+    {{ block.super }}
+
+    <ol style="list-style: none;">
+            
+        {% for letter in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' %}
+            <li style="display: inline ; margin: 2px;border:1px solid gainsboro;border-radius: 74px;padding: 5px;" >
+                <a href="{% url opts|admin_urlname:'changelist' %}?q={{letter}}">
+                    {{letter}}
+                </a>
+            </li>  
+        {% endfor %}
+        
+    </ol>
+
+{%endblock%}
+
+
+{% block result_list %}
+    {{ block.super }}
+{%endblock%}
